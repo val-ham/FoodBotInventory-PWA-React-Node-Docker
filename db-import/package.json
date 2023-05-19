@@ -1,0 +1,13 @@
+{
+  "name": "itemdata",
+  "version": "1.0.0",
+  "main": "import.js",
+  "scripts": {
+    "start": "node import.js"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "mysql2": "^3.2.3"
+  },
+  "type": "module"
+}

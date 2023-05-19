@@ -1,0 +1,52 @@
+stages:
+  - package
+
+variables:
+  CLIENT_IMAGE: $CI_REGISTRY_IMAGE/client
+  API_IMAGE: $CI_REGISTRY_IMAGE/api
+  NGINX_IMAGE: $CI_REGISTRY_IMAGE/nginx
+  DB_IMPORT_IMAGE: $CI_REGISTRY_IMAGE/db-import
+
+.build client image:
+  stage: package
+  image: docker:20.10.12
+  services:
+    - docker:20.10.12-dind
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $CLIENT_IMAGE -t $CLIENT_IMAGE:$APP_VERSION ./client
+    - docker image ls
+    - docker push --all-tags $CLIENT_IMAGE
+
+.build api image:
+  stage: package
+  image: docker:20.10.12
+  services:
+    - docker:20.10.12-dind
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $API_IMAGE -t $API_IMAGE:$APP_VERSION ./api
+    - docker image ls
+    - docker push --all-tags $API_IMAGE
+
+.build nginx image:
+  stage: package
+  image: docker:20.10.12
+  services:
+    - docker:20.10.12-dind
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $NGINX_IMAGE -t $NGINX_IMAGE:$APP_VERSION ./nginx
+    - docker image ls
+    - docker push --all-tags $NGINX_IMAGE
+
+.build db-import image:
+  stage: package
+  image: docker:20.10.12
+  services:
+    - docker:20.10.12-dind
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $DB_IMPORT_IMAGE -t $DB_IMPORT_IMAGE:$APP_VERSION ./db-import
+    - docker image ls
+    - docker push --all-tags $DB_IMPORT_IMAGE
