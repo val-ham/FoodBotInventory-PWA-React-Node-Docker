@@ -1,5 +1,5 @@
 # Home Food Inventory App
-Manage and track your food ingredients at home. The app provides several features to make this as seamless and efficient as possible.
+Manage and track your food ingredients at home. Generate recipes from your ingredients.
 
 ## Main Features
 **Scan EAN Codes:** Easily add items to your inventory by scanning the EAN codes.  
