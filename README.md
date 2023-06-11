@@ -8,8 +8,6 @@ Manage and track your food ingredients at home. Generate recipes from your ingre
 ## Technology Stack
 React, Node, MySQL
 ## Chatbot
-The app uses OpenAI API to communicate with the gpt-3.5-turbo model.  
-## Deployment
-The app is containerized and the containers are running on a Virtual Machine on Azure. Access the application [here](https://foodapp-pwa.northeurope.cloudapp.azure.com)  
+The app uses OpenAI API to communicate with the gpt-3.5-turbo model.   
 ## Progressive Web App
 This application is a Progressive Web App (PWA). At present, the application's design is for mobile viewing only.
